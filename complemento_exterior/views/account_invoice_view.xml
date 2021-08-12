@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_invoice_inherit_form" model="ir.ui.view">
+            <field name="name">account.invoice.inherit.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form" />
+            <field name="arch" type="xml">
+               <xpath expr="//field[@name='tipo_comprobante']" position="after">
+                   <field name="cce_habilitar"/>
+               </xpath>
+			   <xpath expr="//notebook" position="inside">
+                 <page name="datos_cce" string="Comercio Exterior">
+			      <group cols="4" >
+					 <group>
+                        <field name="cce_tipooperacion"/>
+						 <field name="cce_clavedepedimento"/>
+						 <field name="cce_certificadoorigen"/>
+                        <field name="cce_numcertificadoorigen"/>
+						 <field name="cce_numeroexportadorconfiable"/>
+                    </group>
+				    <group>
+						 <field name="cce_motivo_traslado" attrs="{'invisible':[('tipo_comprobante','!=','T')]}"/>
+						 <field name="cee_propietario_id" attrs="{'invisible':[('cce_motivo_traslado','!=','05')]}"/>
+						 <field name="cce_incoterm"/>
+					    <field name="cce_subdivision"/>
+                       	<field name="cce_tipocambiousd"/>
+						<field name="cce_totalusd"/>
+                    </group>
+				  </group>
+                </page>
+				   
+             <page name="mercancia_cee" string="Mercancías" >
+                        <field name="cce_mercancias">
+                            <tree editable="bottom">
+                                <field name="product_id"/>
+                                <field name="fraccionarancelaria"/>
+                                <field name="unidadAduana"/>
+                                <field name="info_mercancias"/>
+                                <field name="cantidadaduana"/>
+                                <field name="valorunitarioaduana"/> 
+                                <field name="valordolares"/> 
+                            </tree>
+                        </field>
+                </page>
+            </xpath>
+            </field>
+    </record>
+	
+	<record id="view_invoice_inherit_tree" model="ir.ui.view">
+        <field name="name">account.invoice.inherit.tree</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_tree" />
+        <field name="arch" type="xml">
+            <field name="state" position="before">
+            	<field name="cce_habilitar" string="Compl. Ext."/>
+            </field>    
+        </field>
+    </record>
+</odoo>

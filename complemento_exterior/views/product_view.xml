@@ -11,10 +11,8 @@
 				<xpath expr="//page[@name='sales']" position="after">
 					<page string="Complemento Exterior" name="complemento_cce">
 						<group col="4">
-		                    <field name="cce_marca" />
-		                    <field name="cce_modelo" />
-		                    <field name="cce_submodelo"/>
-							<field name="cce_numeroserie"/>
+		                    <field name="fraccionarancelaria" />
+		                    <field name="unidadAduana" />
 		                </group>
                     </page>
 				</xpath>

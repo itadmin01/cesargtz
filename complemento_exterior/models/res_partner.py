@@ -15,3 +15,4 @@ class ResPartner(models.Model):
     cce_no_exterior = fields.Char(string=_('Numero exterior'))
     cce_no_interior = fields.Char(string=_('Numero interior'))
     cce_clave_localidad = fields.Many2one('catalogos.localidades', string='Clave Localidad')
+    cce_codigo_postal = fields.Char(string=_('Código postal'))

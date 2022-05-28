@@ -22,6 +22,16 @@ catalogos_conf_autotransporte20,T3S2R4,"Tractocamión Semirremolque-Remolque (10
 catalogos_conf_autotransporte21,T2S2S2,"Tractocamión Semirremolque-Semirremolque (6 llantas en el tractocamión, 8 llantas en el semirremolque delantero y 8 llantas en el semirremolque trasero)"
 catalogos_conf_autotransporte22,T3S2S2,"Tractocamión Semirremolque-Semirremolque (10 llantas en el tractocamión, 8 llantas en el semirremolque delantero y 8 llantas en el semirremolque trasero)"
 catalogos_conf_autotransporte23,T3S3S2,"Tractocamión Semirremolque-Semirremolque (10 llantas en el tractocamión, 12 llantas en el semirremolque delantero y 8 llantas en el semirremolque trasero)"
-catalogos_conf_autotransporte24,OTROEV,Especializado de Voluminoso
-catalogos_conf_autotransporte25,OTROEGP,Especializado de Gran Peso
-catalogos_conf_autotransporte26,OTROSG,Servicio de Grúas
+catalogos_conf_autotransporte24,OTROEV,"Especializado de Voluminoso"
+catalogos_conf_autotransporte25,OTROEGP,"Especializado de Gran Peso"
+catalogos_conf_autotransporte26,OTROSG,"Servicio de Grúas"
+catalogos_conf_autotransporte27,OTROEVGP,"Especializado de carga Voluminosa y/o Gran Peso"
+catalogos_conf_autotransporte28,GPLUTA,"Grúa de Pluma Tipo A"
+catalogos_conf_autotransporte29,GPLUTB,"Grúa de Pluma Tipo B"
+catalogos_conf_autotransporte30,GPLUTC,"Grúa de Pluma Tipo C"
+catalogos_conf_autotransporte31,GPLUTD,"Grúa de Pluma Tipo D"
+catalogos_conf_autotransporte32,GPLATA,"Grúa de Plataforma Tipo A"
+catalogos_conf_autotransporte33,GPLATB,"Grúa de Plataforma Tipo B"
+catalogos_conf_autotransporte34,GPLATC,"Grúa de Plataforma Tipo C"
+catalogos_conf_autotransporte35,GPLATD,"Grúa de Plataforma Tipo D"
+catalogos_conf_autotransporte36,VL,"Vehículo ligero de carga (2 llantas en el eje delantero y 2 llantas en el eje trasero)"

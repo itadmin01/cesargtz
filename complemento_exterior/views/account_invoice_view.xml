@@ -5,31 +5,29 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form" />
             <field name="arch" type="xml">
-               <xpath expr="//field[@name='tipo_comprobante']" position="after">
-                   <field name="cce_habilitar"/>
+               <xpath expr="//notebook//page[@name='info_cdfi']//group//group[@name='complementos']" position="inside">
+                   <field name="cce_habilitar_cee"/>
+                   <field name="cce_habilitar_exterior"/>
                </xpath>
-			   <xpath expr="//notebook" position="inside">
-                 <page name="datos_cce" string="Comercio Exterior">
-			      <group cols="4" >
-					 <group>
-                        <field name="cce_tipooperacion"/>
-						 <field name="cce_clavedepedimento"/>
-						 <field name="cce_certificadoorigen"/>
-                        <field name="cce_numcertificadoorigen"/>
-						 <field name="cce_numeroexportadorconfiable"/>
+               <xpath expr="//notebook" position="inside">
+                 <page name="datos_cce" string="Comercio Exterior" attrs="{'invisible': [('cce_habilitar_cee','=',False), ('cce_habilitar_exterior','=',False)]}">
+                  <group cols="4" >
+                    <group>
+                         <field name="cce_tipooperacion"/>
+                         <field name="cce_clavedepedimento"/>
+                         <field name="cce_incoterm"/>
+                         <field name="cce_subdivision"/>
                     </group>
-				    <group>
-						 <field name="cce_motivo_traslado" attrs="{'invisible':[('tipo_comprobante','!=','T')]}"/>
-						 <field name="cee_propietario_id" attrs="{'invisible':[('cce_motivo_traslado','!=','05')]}"/>
-						 <field name="cce_incoterm"/>
-					    <field name="cce_subdivision"/>
-                       	<field name="cce_tipocambiousd"/>
-						<field name="cce_totalusd"/>
+                    <group>
+                         <field name="cce_motivo_traslado" attrs="{'invisible':[('tipo_comprobante','!=','T')]}"/>
+                         <field name="cee_propietario_id" attrs="{'invisible':[('cce_motivo_traslado','!=','05')]}"/>
+                         <field name="cce_certificadoorigen"/>
+                         <field name="cce_numcertificadoorigen"/>
+                         <field name="cce_numeroexportadorconfiable"/>
                     </group>
-				  </group>
-                </page>
-				   
-             <page name="mercancia_cee" string="Mercancías" >
+                  </group>
+                 </page>
+                 <page name="mercancia_cee" string="Mercancías" attrs="{'invisible': [('cce_habilitar_exterior','=',False)]}" >
                         <field name="cce_mercancias">
                             <tree editable="bottom">
                                 <field name="product_id"/>
@@ -41,19 +39,19 @@
                                 <field name="valordolares"/> 
                             </tree>
                         </field>
-                </page>
-            </xpath>
+                 </page>
+               </xpath>
             </field>
     </record>
-	
-	<record id="view_invoice_inherit_tree" model="ir.ui.view">
-        <field name="name">account.invoice.inherit.tree</field>
+
+    <record id="view_invoice_inherit_tree" model="ir.ui.view">
+        <field name="name">cce.invoice.inherit.line.tree</field>
         <field name="model">account.invoice</field>
-        <field name="inherit_id" ref="account.invoice_tree" />
+        <field name="inherit_id" ref="account.invoice_form" />
         <field name="arch" type="xml">
-            <field name="state" position="before">
-            	<field name="cce_habilitar" string="Compl. Ext."/>
-            </field>    
+               <xpath expr="/form/sheet/notebook/page[1]/field[@name='invoice_line_ids']/tree/field[@name='name']" position="after">
+                   <field name="info_mercancias"/>
+                 </xpath>
         </field>
     </record>
 </odoo>

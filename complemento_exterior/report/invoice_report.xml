@@ -5,7 +5,7 @@
         <template id="complemento_comercio_exterior" inherit_id="cdfi_invoice.report_invoice_document">
         <xpath expr="//div[@name='cadenas']" position="before">
 					<!--INICIA TABLA DE COMERCIO EXTERIOR-->
-				<t t-if="o.cce_habilitar == 'si'">
+				<t t-if="o.cce_habilitar_cee or o.cce_habilitar_exterior">
 					<div>
 					        <strong>Complemento de comercio exterior </strong>
 					    </div>
@@ -64,7 +64,7 @@
 									<strong>Tipo de cambio USD</strong>
 								</td>
 								<td >
-									<span t-field="o.cce_tipocambiousd" />
+									<span t-esc="round(float(o.tipocambio),2)" />
 								</td>
 							</tr>
 							<tr>
@@ -73,7 +73,7 @@
 									<strong>Total USD</strong>
 								</td>
 								<td >
-									<span t-field="o.cce_totalusd" />
+									<span t-field="o.amount_total" />
 								</td>
 							</tr>
 						</table>
@@ -93,28 +93,54 @@
 								<th>Valor unitario USD</th>
 								<th>Valor dolares</th>
 							</tr>
-					        <t t-foreach="o.cce_mercancias" t-as="merc">
-							   <tr>
-									<td>
-										<span t-field="merc.product_id.code"></span>
-									</td>
-									<td>
-										<span t-field="merc.fraccionarancelaria.c_fraccionarancelaria"></span>
-									</td>
-									<td>
-										<span t-field="merc.unidadAduana.descripcion"></span>
-									</td>
-									<td>
-										<span t-esc="'{0:,.2f}'.format(merc.cantidadaduana)"></span>
-									</td>
-									<td>
-										<span t-esc="'{0:,.2f}'.format(merc.valorunitarioaduana)"></span>
-									</td>
-									<td>
-										<span t-esc="'{0:,.2f}'.format(merc.valordolares)"></span>
-									</td>
-							</tr>
-					        </t>
+                            <t t-if="o.cce_habilitar_cee">
+                                 <t t-foreach="o.invoice_line_ids" t-as="merc">
+                                    <tr>
+                                        <td>
+                                           <span t-field="merc.product_id.code"></span>
+                                        </td>
+                                        <td>
+                                           <span t-field="merc.product_id.fraccionarancelaria.c_fraccionarancelaria"></span>
+                                        </td>
+                                        <td>
+                                           <span t-field="merc.product_id.unidadAduana.descripcion"></span>
+                                        </td>
+                                        <td>
+                                           <span t-esc="'{0:,.2f}'.format(merc.quantity)"></span>
+                                        </td>
+                                        <td>
+                                           <span t-esc="'{0:,.2f}'.format(merc.price_unit)"></span>
+                                        </td>
+                                        <td>
+                                           <span t-esc="'{0:,.2f}'.format(merc.price_subtotal)"></span>
+                                        </td>
+                                    </tr>
+                                 </t>
+                            </t>
+                            <t t-if="o.cce_habilitar_exterior">
+                                 <t t-foreach="o.cce_mercancias" t-as="merc">
+                                    <tr>
+                                        <td>
+                                           <span t-field="merc.product_id.code"></span>
+                                        </td>
+                                        <td>
+                                           <span t-field="merc.fraccionarancelaria.c_fraccionarancelaria"></span>
+                                        </td>
+                                        <td>
+                                           <span t-field="merc.unidadAduana.descripcion"></span>
+                                        </td>
+                                        <td>
+                                           <span t-esc="'{0:,.2f}'.format(merc.cantidadaduana)"></span>
+                                        </td>
+                                        <td>
+                                           <span t-esc="'{0:,.2f}'.format(merc.valorunitarioaduana)"></span>
+                                        </td>
+                                        <td>
+                                           <span t-esc="'{0:,.2f}'.format(merc.valordolares)"></span>
+                                        </td>
+                                    </tr>
+                                 </t>
+                            </t>
 						</table>
 					</div>
 					<!--TERMINA TABLA DE MERCANCIAS-->

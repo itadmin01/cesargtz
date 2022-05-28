@@ -21,6 +21,7 @@
                                     <field name="cce_clave_municipio"/>	
                                     <field name="cce_clave_estado"/>
                                     <field name="cce_clave_pais"/>
+                                    <field name="cce_codigo_postal"/>
                                 </group>
                             </group>
                      </page>

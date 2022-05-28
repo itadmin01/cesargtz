@@ -24,8 +24,9 @@ from . import cve_tipo_carga
 from . import cve_cont_maritimo
 from . import cve_autorizacion_naviera
 from . import cve_codigo_transporte_aereo
-from . import cve_clave_prod_stcc
 from . import cve_tipo_servicio
 from . import cve_derecho_paso
 from . import cve_tipo_carro
 from . import cve_contenedor
+from . import cve_parte_transporte
+from . import cve_figura_transporte

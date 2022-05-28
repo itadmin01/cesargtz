@@ -2,8 +2,8 @@
 
 from odoo import models, fields, api
 
-class CveClaveProdStcc(models.Model):
-    _name = 'cve.clave.prod.stcc'
+class CveFiguraTransporte(models.Model):
+    _name = 'cve.figura.transporte'
     _rec_name = "descripcion"
 
     clave = fields.Char(string='Clave')
